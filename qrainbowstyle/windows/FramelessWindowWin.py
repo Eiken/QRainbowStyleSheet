@@ -14,7 +14,7 @@ if sys.platform == "win32":
 else:
     raise Exception("Windows API is not supported on non Windows OS.")
 
-from qtpy.QtWidgets import QApplication
+from qtpy.QtGui import QGuiApplication
 from qtpy.QtCore import QMetaObject, Slot
 
 from .base import FramelessWindowBase
@@ -44,7 +44,7 @@ class FramelessWindow(FramelessWindowBase):
 
     def __init__(self, parent=None):
         super(FramelessWindow, self).__init__(parent)
-        self.__rect = QApplication.instance().desktop().availableGeometry(self)
+        self.__rect = QGuiApplication.primaryScreen().availableGeometry()
 
         self.__titlebarHeight = 45
         self.__borderWidth = 3

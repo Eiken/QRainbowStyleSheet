@@ -3,22 +3,19 @@
 
 The script will attempt to compile the qrc file using the following tools:
 
-    - pyrcc4 for PyQt4 and PyQtGraph (Python)
     - pyrcc5 for PyQt5 and QtPy (Python)
-    - pyside-rcc for PySide (Python)
     - pyside2-rcc for PySide2 (Python)
-    - rcc for Qt4 and Qt5 (C++)
+    - pyside6-rcc for PySide6 (Python)
+    - rcc for Qt5 (C++)
 
 Delete the compiled files that you don't want to use manually after
 running this script.
 
 Links to understand those tools:
 
-    - pyrcc4: http://pyqt.sourceforge.net/Docs/PyQt4/resources.html#pyrcc4
     - pyrcc5: http://pyqt.sourceforge.net/Docs/PyQt5/resources.html#pyrcc5
-    - pyside-rcc: https://www.mankier.com/1/pyside-rcc
     - pyside2-rcc: https://doc.qt.io/qtforpython/overviews/resources.html (Documentation Incomplete)
-    - rcc on Qt4: http://doc.qt.io/archives/qt-4.8/rcc.html
+    - pyside6-rcc: https://doc.qt.io/qtforpython-6/tools/pyside-rcc.html
     - rcc on Qt5: http://doc.qt.io/qt-5/rcc.html
 
 """
@@ -128,26 +125,14 @@ def run_process(args):
 
             # creating names
             py_file_pyqt5 = 'pyqt5_' + filename + ext
-            py_file_pyqt = 'pyqt_' + filename + ext
-            py_file_pyside = 'pyside_' + filename + ext
             py_file_pyside2 = 'pyside2_' + filename + ext
+            py_file_pyside6 = 'pyside6_' + filename + ext
             py_file_qtpy = '' + filename + ext
-            py_file_pyqtgraph = 'pyqtgraph_' + filename + ext
 
             # append palette used to generate this file
             used_palette = "\nfrom qrainbowstyle.palette import " + palette.__name__ + "\npalette = " + palette.__name__ + "\n"
 
             # calling external commands
-            if args.create in ['pyqt', 'pyqtgraph', 'all']:
-                logging.debug("Compiling for PyQt4 ...")
-                try:
-                    call(['pyrcc4', '-py3', qrc_file, '-o', py_file_pyqt])
-                    with open(py_file_pyqt, "a+") as f:
-                        f.write(used_palette)
-
-                except FileNotFoundError:
-                    logging.debug("You must install pyrcc4")
-
             if args.create in ['pyqt5', 'qtpy', 'all']:
                 logging.debug("Compiling for PyQt5 ...")
                 try:
@@ -157,15 +142,6 @@ def run_process(args):
                 except FileNotFoundError:
                     logging.debug("You must install pyrcc5")
 
-            if args.create in ['pyside', 'all']:
-                logging.debug("Compiling for PySide ...")
-                try:
-                    call(['pyside-rcc', '-py3', qrc_file, '-o', py_file_pyside])
-                    with open(py_file_pyside, "a+") as f:
-                        f.write(used_palette)
-                except FileNotFoundError:
-                    logging.debug("You must install pyside-rcc")
-
             if args.create in ['pyside2', 'all']:
                 logging.debug("Compiling for PySide 2...")
                 try:
@@ -174,6 +150,15 @@ def run_process(args):
                         f.write(used_palette)
                 except FileNotFoundError:
                     logging.debug("You must install pyside2-rcc")
+
+            if args.create in ['pyside6', 'all']:
+                logging.debug("Compiling for PySide 6...")
+                try:
+                    call(['pyside6-rcc', '-py3', qrc_file, '-o', py_file_pyside6])
+                    with open(py_file_pyside6, "a+") as f:
+                        f.write(used_palette)
+                except FileNotFoundError:
+                    logging.debug("You must install pyside6-rcc")
 
             if args.create in ['qtpy', 'all']:
                 logging.debug("Compiling for QtPy ...")
@@ -191,19 +176,6 @@ def run_process(args):
                 if args.create not in ['pyqt5']:
                     os.remove(py_file_pyqt5)
 
-            if args.create in ['pyqtgraph', 'all']:
-                logging.debug("Compiling for PyQtGraph ...")
-                # special case - pyqtgraph - syntax is PyQt4
-                with open(py_file_pyqt, 'r') as file:
-                    filedata = file.read()
-
-                # replace the target string
-                filedata = filedata.replace('from PyQt4', 'from pyqtgraph.Qt')
-
-                with open(py_file_pyqtgraph, 'w+') as file:
-                    # write the file out again
-                    file.write(filedata)
-
 
 def main(arguments):
     """Process QRC files."""
@@ -215,7 +187,7 @@ def main(arguments):
                         help="QRC file directory, relative to current directory.",)
     parser.add_argument('--create',
                         default='qtpy',
-                        choices=['pyqt', 'pyqt5', 'pyside', 'pyside2', 'qtpy', 'pyqtgraph', 'qt', 'qt5', 'all'],
+                        choices=['pyqt5', 'pyside2', 'pyside6', 'qtpy', 'qt5', 'all'],
                         type=str,
                         help="Choose which one would be generated.")
     parser.add_argument('--watch', '-w',

@@ -1,6 +1,12 @@
 Changelog
 =========
 
+- Unreleased
+    - Add support for PySide6
+    - Remove traces of unsupported Qt, PyQt4 and PySide
+    - Remove support for pyqtgraph
+    - Remove GoogleMapsWidgets to remove WebEngine dependencies
+
 - 0.9.6:
     - Cast ``floats`` to ``ints`` to fix TypeErrors in new Qt version
     - Install Qt message handler in spinner designer

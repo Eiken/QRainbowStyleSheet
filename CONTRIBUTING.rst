@@ -206,8 +206,7 @@ inside script folder, using:
        python process_ui.py
     ```
 
-It will generate all ``_ui.py`` files for PyQt4, PyQt5, PySide, QtPy,
-PyQtGraph.
+It will generate all ``_ui.py`` files for PySide2, PySide6, PyQt5, QtPy.
 
 Modifying QSS File
 ~~~~~~~~~~~~~~~~~~
@@ -223,8 +222,7 @@ folder.
        python process_qrc.py
     ```
 
-This generates all ``_rc.py`` files for PyQt4, PyQt5, PySide, QtPy,
-PyQtGraph.
+This generates all ``_rc.py`` files for PySide2, PySide6, PyQt5, QtPy.
 
 Making It Easy
 ~~~~~~~~~~~~~~

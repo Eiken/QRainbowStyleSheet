@@ -11,6 +11,7 @@ qtsass
 watchdog
 pyqt5
 pyside2
+pyside6
 qtpy
 
 # To generate documentation

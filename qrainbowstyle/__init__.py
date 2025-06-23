@@ -33,16 +33,18 @@ as shown below
 .. code-block:: python
 
     # PySide2
-    stylesheet = qrainbowstyle.load_stylesheet_pyside2(style='oceanic')
+    stylesheet = qrainbowstyle.load_stylesheet(style='oceanic', qt_api='pyside2')
+    # PySide6
+    stylesheet = qrainbowstyle.load_stylesheet(style='oceanic', qt_api='pyside6')
     # PyQt5
-    stylesheet = qrainbowstyle.load_stylesheet_pyqt5(style='oceanic')
+    stylesheet = qrainbowstyle.load_stylesheet(style='oceanic', qt_api='pyqt5')
 
 Alternatively, from environment variables provided by QtPy, Qt.Py
 
 .. code-block:: python
 
     # QtPy
-    stylesheet =  qrainbowstyle.load_stylesheet(style='oceanic')
+    stylesheet = qrainbowstyle.load_stylesheet(style='oceanic')
     # Qt.Py
     stylesheet = qrainbowstyle.load_stylesheet(style='oceanic', qt_api=Qt.__binding__)
 
@@ -304,7 +306,7 @@ def _load_stylesheet(qt_api='', style=''):
 
     Args:
         qt_api (str): qt binding name to set QT_API environment variable.
-                      Default is ''. Possible values are pyside2,
+                      Default is ''. Possible values are pyside2, pyside6,
                       pyqt5. Not case sensitive.
 
     Note:
@@ -428,7 +430,7 @@ def load_stylesheet(qt_api="", style='qdarkstyle3'):
     Args:
         qt_api (str): Qt binding name to set QT_API environment variable.
                       Default is '', i.e PyQt5 the default QtPy binding.
-                      Possible values are pyside2, pyqt5.
+                      Possible values are pyside2, pyside6, pyqt5.
                       Not case sensitive.
 
         style (str): Style to use. Default is 'darkblue'
@@ -446,23 +448,3 @@ def load_stylesheet(qt_api="", style='qdarkstyle3'):
         stylesheet = _load_stylesheet(qt_api='pyqt5', style=style)
 
     return stylesheet
-
-
-def load_stylesheet_pyside2(style='darkblue'):
-    """
-    Load the stylesheet for use in a PySide2 application.
-
-    Returns:
-        str: the stylesheet string.
-    """
-    return _load_stylesheet(qt_api='pyside2', style=style)
-
-
-def load_stylesheet_pyqt5(style='darkblue'):
-    """
-    Load the stylesheet for use in a PyQt5 application.
-
-    Returns:
-        str: the stylesheet string.
-    """
-    return _load_stylesheet(qt_api='pyqt5', style=style)

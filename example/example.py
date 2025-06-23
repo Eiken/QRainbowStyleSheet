@@ -9,10 +9,10 @@ Qt Design (common ones) in the basic states (enabled/disabled), and
 
 Requirements:
 
-    - Python 2 or Python 3
+    - Python 3
     - QtPy
-    - PyQt5 or PyQt4 or PySide2 or PySide
-    - PyQtGraph or Qt.Py (if choosen)
+    - PyQt5, PySide2 or PySide6
+    - Qt.Py (if choosen)
 
 To run this example using PyQt5, simple do
 
@@ -26,7 +26,7 @@ or
 
     python example.py  --qt_from=pyqt5
 
-Other options for qt_from are: pyqt5, pyside2, pyqt, pyside, qtpy, pyqtgraph, and qt.py.
+Other options for qt_from are: pyqt5, pyside2, pyside6, qtpy, and qt.py.
 Also, you can run the example without dark theme (no_dark), to check for problems.
 
 .. code-block:: python
@@ -69,7 +69,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--qt_from', default='qtpy', type=str,
-                        choices=['pyqt5', 'pyqt', 'pyside2', 'pyside', 'qtpy', 'pyqtgraph', 'qt.py'],
+                        choices=['pyqt5', 'pyside2', 'pyside6', 'qtpy','qt.py'],
                         help="Choose which binding and/or abstraction is to be used to run the example.")
     parser.add_argument('--style', type=str,
                         help="Use custom style.")
@@ -97,10 +97,8 @@ def _main(args):
         os.environ['QT_QPA_PLATFORM'] = 'offscreen'
 
     # Set QT_API variable before importing QtPy
-    if args.qt_from in ['pyqt', 'pyqt5', 'pyside', 'pyside2']:
+    if args.qt_from in ['pyqt5', 'pyside2', 'pyside6']:
         os.environ['QT_API'] = args.qt_from
-    elif args.qt_from == 'pyqtgraph':
-        os.environ['QT_API'] = os.environ['PYQTGRAPH_QT_LIB']
     elif args.qt_from in ['qt.py', 'qt']:
         try:
             import Qt

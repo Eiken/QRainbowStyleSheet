@@ -18,9 +18,7 @@ Or use the helpdev if you have
 
 [If used, please inform their versions]
 
-- PySide:
-- PyQt:
-- PyQtGraph:
+- PySide6:
 - QtPy:
 - QT_API:
 - PYQTGRAPH_QT_LIB:

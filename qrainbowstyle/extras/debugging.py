@@ -1,7 +1,7 @@
 import logging
 import traceback
 
-from qtpy.QtCore import QtInfoMsg, QtFatalMsg, QtCriticalMsg, QtWarningMsg
+from qtpy.QtCore import QtMsgType
 
 
 class OutputLogger:
@@ -42,13 +42,13 @@ class OutputLogger:
 def qt_message_handler(mode, context, message):
     """Logger for Qt errors"""
     logger = logging.getLogger("QtLogger")
-    if mode == QtInfoMsg:
+    if mode == QtMsgType.QtInfoMsg:
         mode = 20
-    elif mode == QtWarningMsg:
+    elif mode == QtMsgType.QtWarningMsg:
         mode = 30
-    elif mode == QtCriticalMsg:
+    elif mode == QtMsgType.QtCriticalMsg:
         mode = 40
-    elif mode == QtFatalMsg:
+    elif mode == QtMsgType.QtFatalMsg:
         mode = 50
     else:
         mode = 20

@@ -1,8 +1,8 @@
 import logging
 
 from qtpy.QtCore import QObject, QRect, Qt, QPoint, QSize, QEvent
-from qtpy.QtGui import QMouseEvent, QCursor
-from qtpy.QtWidgets import QApplication, QWidget
+from qtpy.QtGui import QMouseEvent, QCursor, QGuiApplication
+from qtpy.QtWidgets import QWidget
 
 from .base import FramelessWindowBase
 
@@ -112,7 +112,7 @@ class FramelessWindow(FramelessWindowBase):
                 elif event.type() == QMouseEvent.MouseButtonRelease and event.button() == Qt.LeftButton:
                     # if left button released
                     self.__moving = False
-                    screen = QApplication.instance().desktop().availableGeometry()
+                    screen = QGuiApplication.primaryScreen().availableGeometry()
                     if event.globalY() == 0:
                         # snap to top edge
                         self.titlebar().on_btnMaximize_clicked()

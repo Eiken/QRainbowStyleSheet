@@ -14,14 +14,14 @@ from setuptools import find_packages, setup
 from qrainbowstyle import __doc__ as long_desc
 from qrainbowstyle import __version__
 
-install_requires = ['helpdev>=0.6.10', 'qtpy>=1.9', 'PyQtWebEngine']
+install_requires = ['helpdev>=0.6.10', 'qtpy>=1.9']
 if sys.platform.startswith("win"):
     install_requires += ["pywin32"]
 
 extras_require = {
     'develop': ['qtsass', 'watchdog'],
     'docs': ['sphinx', 'sphinx_rtd_theme'],
-    'example': ['pyqt5', 'pyside2']
+    'example': ['pyqt5', 'pyside2', 'pyside6'],
 }
 
 

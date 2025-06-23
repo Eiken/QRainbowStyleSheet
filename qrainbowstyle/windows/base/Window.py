@@ -1,7 +1,7 @@
 import qrainbowstyle
-from qtpy.QtWidgets import QApplication, QWidget, QVBoxLayout, QSizePolicy, QDialog
-from qtpy.QtGui import QIcon
-from qtpy.QtCore import Qt, QMetaObject, QEvent, QSize, Signal, Slot
+from qtpy.QtWidgets import QWidget, QVBoxLayout, QSizePolicy, QDialog
+from qtpy.QtGui import QIcon, QGuiApplication
+from qtpy.QtCore import Qt, QMetaObject, QEvent, QSize, Signal
 
 from .Titlebar import Titlebar
 
@@ -11,7 +11,7 @@ class FramelessWindowBase(QDialog):
 
     def __init__(self, parent):
         super(FramelessWindowBase, self).__init__(parent)
-        self.__rect = QApplication.instance().desktop().availableGeometry(self)
+        self.__rect = QGuiApplication.primaryScreen().availableGeometry()
 
         self.__resizingEnabled = True
         self.__contentWidgets = []

@@ -5,7 +5,7 @@ QRainbowStyleSheet
 |License: CC BY 4.0| |Conduct|
 
 The most complete customizable stylesheet for Qt application (PySide2,
-PyQt5, QtPy, Qt.Py).
+PySide6, PyQt5, QtPy, Qt.Py).
 
 Preview
 -------
@@ -109,7 +109,7 @@ Style sheet
     import qrainbowstyle
 
     # set the environment variable to use a specific wrapper
-    # it can be set to pyqt, pyqt5, or pyside2
+    # it can be set to pyqt5, pyside2 or pyside6
     # you do not need to use QtPy to set this variable
     os.environ['QT_API'] = 'pyqt5'
 
@@ -143,8 +143,6 @@ If you are using PyQt5 directly, see the complete example
     window = QMainWindow()
 
     # setup stylesheet
-    app.setStyleSheet(qrainbowstyle.load_stylesheet_pyqt5())
-    # or in new API
     app.setStyleSheet(qrainbowstyle.load_stylesheet(qt_api='pyqt5'))
 
     # run
@@ -165,8 +163,6 @@ Here is an example using PySide2
     window = QMainWindow()
 
     # setup stylesheet
-    app.setStyleSheet(qrainbowstyle.load_stylesheet_pyside2())
-    # or in new API
     app.setStyleSheet(qrainbowstyle.load_stylesheet(qt_api='pyside2'))
 
     # run
@@ -202,15 +198,6 @@ Widgets
 
 In v0.6 I added a few new widgets which automatically load colors from current
 stylesheet's palette.
-
-
-GoogleMapsView
-~~~~~~~~~~~~~~
-
-GoogleMapsView allows to load Google Maps to application. Supports creating markers and polylines.
-Call handler captures all map/markers/polylines actions such as map move or marker click/double click.
-
-.. image:: https://raw.githubusercontent.com/desty2k/QRainbowStyleSheet/master/images/frameless_mainwindow_google_maps_example.png
 
 
 StylePicker
