@@ -69,7 +69,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--qt_from', default='qtpy', type=str,
-                        choices=['pyqt5', 'pyside2', 'pyside6', 'qtpy','qt.py'],
+                        choices=['pyqt5', 'pyside2', 'pyside6', 'qtpy', 'qt.py'],
                         help="Choose which binding and/or abstraction is to be used to run the example.")
     parser.add_argument('--style', type=str,
                         help="Use custom style.")
@@ -139,8 +139,10 @@ def _main(args):
 
     # qrainbowstyle.useDarwinButtons()
 
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+    # If using Qt5 enable for HighDPI support, in Qt6 HighDPI support is
+    # enabled by default.
+    # QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
+    # QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
 
     # create the application
     if not QApplication.instance():

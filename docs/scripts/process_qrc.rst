@@ -5,3 +5,4 @@ process\_qrc module
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:

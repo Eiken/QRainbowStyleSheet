@@ -1,6 +1,12 @@
 qrainbowstyle.widgets package
 =============================
 
+.. automodule:: qrainbowstyle.widgets
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
 Subpackages
 -----------
 
@@ -10,11 +16,3 @@ Subpackages
    qrainbowstyle.widgets.PythonQtWidgets
    qrainbowstyle.widgets.QRoundProgressBar
    qrainbowstyle.widgets.QtWaitingSpinner
-
-Module contents
----------------
-
-.. automodule:: qrainbowstyle.widgets
-   :members:
-   :undoc-members:
-   :show-inheritance:

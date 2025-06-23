@@ -202,8 +202,10 @@ def main():
     logmodule = qrainbowstyle.extras.OutputLogger()
     qInstallMessageHandler(qrainbowstyle.extras.qt_message_handler)
 
-    QtWidgets.QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-    QtWidgets.QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+    # If using Qt5 enable for HighDPI support, in Qt6 HighDPI support is
+    # enabled by default.
+    # QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
+    # QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
 
     app = QtWidgets.QApplication(sys.argv)
     app.setStyleSheet(qrainbowstyle.load_stylesheet(style="oceanic"))

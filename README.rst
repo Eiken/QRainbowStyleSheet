@@ -72,8 +72,10 @@ Frameless windows
     from qtpy.QtWidgets import QApplication
     from qtpy.QtCore import Qt
 
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+    # If using Qt5 enable for HighDPI support, in Qt6 HighDPI support is
+    # enabled by default.
+    # QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
+    # QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
 
     app = QApplication(sys.argv)
     app.setStyleSheet(qrainbowstyle.load_stylesheet(style="oceanic"))

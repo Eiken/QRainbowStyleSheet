@@ -1,7 +1,5 @@
 from qtpy.QtWidgets import QApplication
-
 import qrainbowstyle
-
 
 
 def setStylesheetOnQApp(style):

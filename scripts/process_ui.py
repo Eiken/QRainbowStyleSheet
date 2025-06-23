@@ -40,7 +40,7 @@ def main(arguments):
                         help="UI files directory, relative to current directory.",)
     parser.add_argument('--create',
                         default='qtpy',
-                        choices=['pyqt5', 'pyside2', 'pyside6', 'qtpy','all'],
+                        choices=['pyqt5', 'pyside2', 'pyside6', 'qtpy', 'all'],
                         type=str,
                         help="Choose which one would be generated.")
 
@@ -103,6 +103,7 @@ def main(arguments):
 
             if args.create not in ['pyqt5']:
                 os.remove(py_file_pyqt5)
+
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1:]))

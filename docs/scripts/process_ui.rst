@@ -5,3 +5,4 @@ process\_ui module
    :members:
    :undoc-members:
    :show-inheritance:
+   :private-members:
