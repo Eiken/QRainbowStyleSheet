@@ -1,7 +1,7 @@
 Changelog
 =========
 
-- Unreleased
+- 0.9.7
     - Add support for py 3.10
     - Add support for PySide6
     - Remove traces of unsupported Qt, PyQt4 and PySide
